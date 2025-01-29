@@ -28,16 +28,13 @@ int partition(Recipe arr[], int low, int high, int (*cmp)(const Recipe *, const 
             swap(&arr[i], &arr[j]);
         }
     }
-    swap(&arr[i + 1], &arr[high]); // Move pivot into the correct position
-    return i + 1; // Return the pivot index
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
 }
 
-// QuickSort function with the median-of-three pivot selection
 void quickSort(Recipe arr[], int low, int high, int (*cmp)(const Recipe *, const Recipe *)) {
     if (low < high) {
-        int pi = partition(arr, low, high, cmp); // Partition the array
-        
-        // Recursively sort the left and right parts
+        int pi = partition(arr, low, high, cmp);
         quickSort(arr, low, pi - 1, cmp);
         quickSort(arr, pi + 1, high, cmp);
     }
